@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Navigate } from 'react-router-dom';
 
 function Login(props) {
 
@@ -10,6 +11,7 @@ function Login(props) {
         axios.post("https://localhost:7176/auth/login", formData)
             .then((res) => {
                 localStorage.setItem("access_token", res.data.token);
+                <Navigate to="/protected"></Navigate>
             })
             // .catch(() => {
             //     console.log("Id incorrects.");

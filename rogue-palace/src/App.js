@@ -6,6 +6,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import Protected from './protected';
+import Subject from './SubjectCard';
 import { Base64 } from 'js-base64';
 
 function isTokenExpired(token) {
@@ -50,6 +51,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login/>}/>
         <Route path='/protected' element={<ProtectedRoute><Protected/></ProtectedRoute>}/>
+        <Route path='/subject' element={<ProtectedRoute><Subject/></ProtectedRoute>}/>
         <Route path='/' element={<Home/>}/>
       </Routes>
     </BrowserRouter>
