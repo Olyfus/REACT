@@ -1,7 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import Palace from './palace';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
@@ -28,7 +26,7 @@ function isTokenExpired(token) {
 function ProtectedRoute( { children } ){
   const token = localStorage.getItem("access_token");
   if (token === null || isTokenExpired(token)){
-    return(<Navigate to="/login"></Navigate>)
+    return(<Navigate to="/"></Navigate>)
   }
 
   return children;
@@ -43,16 +41,18 @@ function App() {
   }
   const disconnect = () => {
     localStorage.removeItem("access_token");
-    return <Navigate to="/login"></Navigate>
+    return <Navigate to="/"></Navigate>
   }
   return (
     <BrowserRouter>
-    <button onClick={() => disconnect()}>Déco</button>
+      <button onClick={() => disconnect()}>
+        Déco
+      </button>
       <Routes>
-        <Route path='/login' element={<Login/>}/>
+        <Route path='/Home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
         <Route path='/protected' element={<ProtectedRoute><Protected/></ProtectedRoute>}/>
         <Route path='/subject' element={<ProtectedRoute><Subject/></ProtectedRoute>}/>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Login/>}/>
       </Routes>
     </BrowserRouter>
   );
