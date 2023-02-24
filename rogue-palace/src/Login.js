@@ -1,10 +1,13 @@
 import axios from "axios";
+import Navbar from "./navbar";
 import { useState } from "react";
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './login.css';
 
-function Login(props) {
+// Navbar();
 
+function Login(props) {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({email: '', password: ''})
     const onSubmit = (event) => {
         event.preventDefault();
@@ -12,7 +15,7 @@ function Login(props) {
         axios.post("https://localhost:7176/auth/login", formData)
             .then((res) => {
                 localStorage.setItem("access_token", res.data.token);
-                <Navigate to="/Home"></Navigate>
+                navigate("/home")
             })
             // .catch(() => {
             //     console.log("Id incorrects.");
@@ -29,47 +32,47 @@ function Login(props) {
 
     return (
       <div className="Login">
-        <form autocomplete='off' class='form' onSubmit={(event) => onSubmit(event)}>
-            <div class='control'>
+        <form autoComplete='off' className='form' onSubmit={(event) => onSubmit(event)}>
+            <div className='control'>
                 <h1>
                 Sign In
                 </h1>
             </div>
             <div class='control block-cube block-input'>
                 <input onChange={(event) => handleChange(event)} name="email" type="text" placeholder="Email"/>
-                <div class='bg-top'>
-                <div class='bg-inner'></div>
+                <div className='bg-top'>
+                <div className='bg-inner'></div>
                 </div>
-                <div class='bg-right'>
-                <div class='bg-inner'></div>
+                <div className='bg-right'>
+                <div className='bg-inner'></div>
                 </div>
-                <div class='bg'>
-                <div class='bg-inner'></div>
+                <div className='bg'>
+                <div className='bg-inner'></div>
                 </div>
             </div>
-            <div class='control block-cube block-input'>
+            <div className='control block-cube block-input'>
                 <input onChange={(event) => handleChange(event)} name="password" type="password" placeholder="Password"/>
-                <div class='bg-top'>
-                <div class='bg-inner'></div>
+                <div className='bg-top'>
+                <div className='bg-inner'></div>
                 </div>
-                <div class='bg-right'>
-                <div class='bg-inner'></div>
+                <div className='bg-right'>
+                <div className='bg-inner'></div>
                 </div>
-                <div class='bg'>
-                <div class='bg-inner'></div>
+                <div className='bg'>
+                <div className='bg-inner'></div>
                 </div>
             </div>
-            <button class='btn block-cube block-cube-hover' type="submit">
-                <div class='bg-top'>
-                <div class='bg-inner'></div>
+            <button className='btn block-cube block-cube-hover' type="submit">
+                <div className='bg-top'>
+                <div className='bg-inner'></div>
                 </div>
-                <div class='bg-right'>
-                <div class='bg-inner'></div>
+                <div className='bg-right'>
+                <div className='bg-inner'></div>
                 </div>
-                <div class='bg'>
-                <div class='bg-inner'></div>
+                <div className='bg'>
+                <div className='bg-inner'></div>
                 </div>
-                <div class='text'>
+                <div className='text'>
                     Log In
                 </div>
             </button>
