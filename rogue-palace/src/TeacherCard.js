@@ -20,7 +20,7 @@ function TeacherCard(props) {
                                 Matière {props.teacher.subjectId}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                                {props.teacher.name}
+                                {props.teacher.name} {props.teacher.firstName} 
                         </Typography>
                     </CardContent>
                 </Card>

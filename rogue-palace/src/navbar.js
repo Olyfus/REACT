@@ -42,21 +42,27 @@ export default function Navbar(props) {
         localStorage.removeItem("access_token");
         return navigate("/")
     }
+    const connect = () => {
+        return navigate("/login")
+    }
     
     return (
-        <div>
-            <Box sx={{ flexGrow: 1 }}>
-      <AppBar className='app-navbar' position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            RoguePalace
-          </Typography>
-            {
+    <div>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar className='app-navbar' position="static">
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              RoguePalace
+            </Typography>
+              {
                 isConnected && <Button color="inherit" onClick={() => disconnect()}> Déconnexion </Button>
-            }
-        </Toolbar>
-      </AppBar>
-    </Box>
-        </div>
+              }
+              {
+                !isConnected && <Button color="inherit" onClick={() => connect()}> Connexion </Button>
+              }
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </div>
     )
 }

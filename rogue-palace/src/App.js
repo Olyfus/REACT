@@ -1,11 +1,13 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Base64 } from 'js-base64';
 import Home from './Home';
 import Login from './Login';
 import Protected from './protected';
-import Subject from './SubjectCard';
-import { Base64 } from 'js-base64';
+import Endpoint from './endpoint';
+import Character from './character';
+import Profile from './profile';
 
 function isTokenExpired(token) {
   if (token === null) {
@@ -41,9 +43,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='/' element={<Endpoint/>}/>
+        <Route path='/login' element={<Login/>}/>
         <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+        <Route path='/character/:id' element={<ProtectedRoute><Character/></ProtectedRoute>}/>
+        <Route path='/profile/:id' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
         <Route path='/protected' element={<ProtectedRoute><Protected/></ProtectedRoute>}/>
-        <Route path='/' element={<Login/>}/>
       </Routes>
     </BrowserRouter>  
   );
