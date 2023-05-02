@@ -83,18 +83,22 @@ function Home(props) {
   return (
     <div className="App">
       <Navbar />    
-      <Button onClick={() => refreshSubject()} variant="outlined">Subject</Button>
-      <Button onClick={() => refreshTeachers()} variant="outlined">Teacher</Button>
+      <Button onClick={() => refreshPersonnage()} variant="outlined">Personnage</Button>
+      <span></span>
+      <Button onClick={() => refreshGroupe()} variant="outlined">Groupe</Button>
       <div className="card-container">
         <div className='charactercard'>
           {subject.map((item, index) => (
+            // <PersonnageCard key={index} subject={item}/>
             <SubjectCard key={index} subject={item}/>
           ))}
         </div>
-        {teachers.map((item, index) => (
-          <GroupeCard key={index} index={item} className="groupcard"/>
-          // <TeacherCard key={index} teacher={item}/>
-        ))}
+        <div className='groupcard'>
+          {teachers.map((item, index) => (
+            <GroupeCard key={index} index={item}/>
+            // <TeacherCard key={index} teacher={item}/>
+          ))}
+        </div>
       </div>
     </div>
   );

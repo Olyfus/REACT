@@ -31,7 +31,7 @@ export default function MultipleSelectNative() {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 120, maxWidth: 300 }}>
+      <FormControl sx={{ m: 1, minWidth: 120, maxWidth: 300 }} className="groupcard">
         <InputLabel shrink htmlFor="select-multiple-native">
           Native
         </InputLabel>

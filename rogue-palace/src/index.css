@@ -30,8 +30,8 @@ code {
 
 .card-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
 }
 
 .charactercard {
@@ -39,7 +39,8 @@ code {
   margin-bottom: 20px;
 }
 .groupcard {
-  background-color: gray;
+  background-color: gray ;
   width: 45%;
+  height: 60%;
   margin-bottom: 20px;
 }
