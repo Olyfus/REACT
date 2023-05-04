@@ -4,14 +4,17 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-function SubjectCard(props) {
+export default function SubjectCard(props) {
     const theme = {
         spacing : 8,
     }
+
     const { sub } = props;
+    
     useEffect(() => {
         console.log(props);
     })
+
     return (
         <div className="App">
             <div>
@@ -28,6 +31,4 @@ function SubjectCard(props) {
             </div>
         </div>
     );
-  }
-  
-  export default SubjectCard;
+};

@@ -1,5 +1,4 @@
-
-import Navbar from "./navbar";
+import Navbar from "./Modules/navbar";
 
 function character(props) {
     return (

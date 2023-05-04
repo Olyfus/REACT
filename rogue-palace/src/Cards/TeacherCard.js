@@ -4,13 +4,16 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-function TeacherCard(props) {
+export default function TeacherCard(props) {
+
     const theme = {
         spacing : 8,
     }
+
     useEffect(() => {
         console.log(props);
     })
+
     return (
         <div className="App">
             <div>
@@ -27,6 +30,4 @@ function TeacherCard(props) {
             </div>
         </div>
     );
-  }
-  
-  export default TeacherCard;
+};

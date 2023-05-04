@@ -1,11 +1,11 @@
+import './CSS/App.css';
 import { Button } from '@mui/material';
-import axios from 'axios';
 import { useState , useEffect } from 'react';
-import './App.css';
-import TeacherCard from './TeacherCard';
-import GroupeCard from './GroupeCard'
-import SubjectCard from './SubjectCard';
-import Navbar from "./navbar";
+import axios from 'axios';
+import TeacherCard from './Cards/TeacherCard';
+import GroupeCard from './Cards/GroupeCard'
+import SubjectCard from './Cards/SubjectCard';
+import Navbar from "./Modules/navbar";
 
 
 function Home(props) {

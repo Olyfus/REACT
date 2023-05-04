@@ -51,7 +51,7 @@ export default function Navbar(props) {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar className='app-navbar' position="static">
           <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
               RoguePalace
             </Typography>
               {
