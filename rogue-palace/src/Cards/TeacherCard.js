@@ -1,8 +1,4 @@
-import { useEffect } from "react";
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import config from "../Modules/config";
 
 export default function TeacherCard(props) {
 
@@ -10,23 +6,23 @@ export default function TeacherCard(props) {
         spacing : 8,
     }
 
-    useEffect(() => {
+    config.useEffect(() => {
         console.log(props);
     })
 
     return (
         <div className="App">
             <div>
-                <Card sx={{ maxWidth: '80%', m: 2, p:2, position: 'sticky', left:'8.5%'}}>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
+                <config.Card sx={{ maxWidth: '80%', m: 2, p:2, position: 'sticky', left:'8.5%'}}>
+                    <config.CardContent>
+                        <config.Typography gutterBottom variant="h5" component="div">
                                 Matière {props.teacher.subjectId}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        </config.Typography>
+                        <config.Typography variant="body2" color="text.secondary">
                                 {props.teacher.name} {props.teacher.firstName} 
-                        </Typography>
-                    </CardContent>
-                </Card>
+                        </config.Typography>
+                    </config.CardContent>
+                </config.Card>
             </div>
         </div>
     );

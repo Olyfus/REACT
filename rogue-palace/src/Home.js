@@ -1,6 +1,6 @@
 import './CSS/App.css';
+import config from './Modules/config';
 import { Button } from '@mui/material';
-import { useState , useEffect } from 'react';
 import axios from 'axios';
 import TeacherCard from './Cards/TeacherCard';
 import GroupeCard from './Cards/GroupeCard'
@@ -10,13 +10,13 @@ import Navbar from "./Modules/navbar";
 
 function Home(props) {
   
-  const [teachers, setTeachers] = useState([]);
-  const [subject, setSubject] = useState([]);
-  const [groupe, setGroupe] = useState([]);
-  const [personnage, setPersonnage] = useState([]);
-  const [utilisateur, setUtilisateur] = useState([]);
+  const [teachers, setTeachers] = config.useState([]);
+  const [subject, setSubject] = config.useState([]);
+  const [groupe, setGroupe] = config.useState([]);
+  const [personnage, setPersonnage] = config.useState([]);
+  const [utilisateur, setUtilisateur] = config.useState([]);
 
-  useEffect(() => {
+  config.useEffect(() => {
     refreshTeachers();
     refreshSubject();
   }, [])

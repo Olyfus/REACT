@@ -1,13 +1,4 @@
 import './CSS/login.css';
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import { TabPanel,  } from '@mui/lab';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import axios from "axios";
 import config from "./Modules/config";
 
 // Navbar();
@@ -17,12 +8,12 @@ export default function Login(props) {
     const [showForm, setShowForm] = config.useState('1');
     const [formDataLogin, setFormDataLogin] = config.useState({ email: '', password: '' });
     const [formDataSignup, setFormDataSignUp] = config.useState({ pseudo: '', email: '', password: '' });
-    const navigate = useNavigate();
+    const navigate = config.useNavigate();
 
     const onSubmitLogin = (event) => {
         event.preventDefault();
         
-        axios.post("https://localhost:7176/auth/login", formDataLogin)
+        config.axios.post("https://localhost:7176/auth/login", formDataLogin)
             .then((res) => {
                 if (res.data.token) {
                     localStorage.setItem("access_token", res.data.token);
@@ -38,7 +29,7 @@ export default function Login(props) {
     const onSubmitSignup = (event) => {
         event.preventDefault();
 
-        axios.post("https://localhost:7176/auth/signup", formDataSignup)
+        config.axios.post("https://localhost:7176/auth/signup", formDataSignup)
         .then((res) => {
             if (res.data) {
                 setTimeout(function() {

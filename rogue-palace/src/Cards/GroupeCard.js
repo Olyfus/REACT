@@ -1,7 +1,4 @@
-import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import config from '../Modules/config';
 
 const names = [
   'Oliver Hansen',
@@ -18,7 +15,7 @@ const names = [
 
 export default function MultipleSelectNative() {
 
-  const [personName, setPersonName] = React.useState([]);
+  const [personName, setPersonName] = config.useState([]);
 
   const handleChangeMultiple = (event) => {
 
@@ -36,11 +33,11 @@ export default function MultipleSelectNative() {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 120, maxWidth: 300 }} className="groupcard">
-        <InputLabel shrink htmlFor="select-multiple-native">
+      <config.FormControl sx={{ m: 1, minWidth: 120, maxWidth: 300 }} className="groupcard">
+        <config.InputLabel shrink htmlFor="select-multiple-native">
           Native
-        </InputLabel>
-        <Select
+        </config.InputLabel>
+        <config.Select
           multiple
           native
           value={personName}
@@ -56,8 +53,8 @@ export default function MultipleSelectNative() {
               {name}
             </option>
           ))}
-        </Select>
-      </FormControl>
+        </config.Select>
+      </config.FormControl>
     </div>
   );
 }

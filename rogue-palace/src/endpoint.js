@@ -1,9 +1,9 @@
-import Navbar from "./Modules/navbar";
+import config from "./Modules/config";
 
 export default function endpoint(props) {
     return (
         <div className="App">
-            <Navbar />
+            <config.Navbar />
         </div>
     );
 };

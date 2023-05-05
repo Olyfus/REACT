@@ -1,8 +1,4 @@
-import { useEffect } from "react";
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import config from "../Modules/config";
 
 export default function SubjectCard(props) {
     const theme = {
@@ -10,24 +6,24 @@ export default function SubjectCard(props) {
     }
 
     const { sub } = props;
-    
-    useEffect(() => {
+
+    config.useEffect(() => {
         console.log(props);
     })
 
     return (
         <div className="App">
             <div>
-                <Card sx={{ maxWidth: '80%', m: 2, p:2, position: 'sticky', left:'8.5%'}}>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
+                <config.Card sx={{ maxWidth: '80%', m: 2, p:2, position: 'sticky', left:'8.5%'}}>
+                    <config.CardContent>
+                        <config.Typography gutterBottom variant="h5" component="div">
                                 Sujet {props.subject.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        </config.Typography>
+                        <config.Typography variant="body2" color="text.secondary">
                                 {props.subject.subjectId}
-                        </Typography>
-                    </CardContent>
-                </Card>
+                        </config.Typography>
+                    </config.CardContent>
+                </config.Card>
             </div>
         </div>
     );
