@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 // Navbar();
 
-function Login(props) {
+export default function Login(props) {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({email: '', password: ''})
     const onSubmit = (event) => {
@@ -81,5 +81,3 @@ function Login(props) {
     </div>
     );
   }
-  
-  export default Login;
