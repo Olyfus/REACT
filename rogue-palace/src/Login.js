@@ -1,45 +1,86 @@
 import './CSS/login.css';
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { TabPanel,  } from '@mui/lab';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import axios from "axios";
+import config from "./Modules/config";
 
 // Navbar();
 
 export default function Login(props) {
+    const [showPassword, setShowPassword] = config.useState(false);
+    const [showForm, setShowForm] = config.useState('1');
+    const [formDataLogin, setFormDataLogin] = config.useState({ email: '', password: '' });
+    const [formDataSignup, setFormDataSignUp] = config.useState({ pseudo: '', email: '', password: '' });
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({email: '', password: ''})
-    const onSubmit = (event) => {
+
+    const onSubmitLogin = (event) => {
         event.preventDefault();
         
-        axios.post("https://localhost:7176/auth/login", formData)
+        axios.post("https://localhost:7176/auth/login", formDataLogin)
             .then((res) => {
-                localStorage.setItem("access_token", res.data.token);
-                navigate("/home")
+                if (res.data.token) {
+                    localStorage.setItem("access_token", res.data.token);
+                    navigate("/home");
+                };
             })
-            // .catch(() => {
-            //     console.log("Id incorrects.");
-            // });
+            .catch(() => {
+                console.log("Id incorrects.");
+            });
 
     }
 
-    const handleChange = (event) => {
-        setFormData({
-            ...formData,
+    const onSubmitSignup = (event) => {
+        event.preventDefault();
+
+        axios.post("https://localhost:7176/auth/signup", formDataSignup)
+        .then((res) => {
+            if (res.data) {
+                setTimeout(function() {
+                    navigate("/login");
+                })
+            };
+        })
+        .catch(() => {
+            console.log("Signup incorrects.");
+        });
+    }
+
+    const handleChangeLogin = (event) => {
+        setFormDataLogin({
+            ...formDataLogin,
             [event.target.name]: event.target.value
         });
+    };
+
+    const handleChangeSignup = (event) => {
+        setFormDataSignUp({
+            ...formDataSignup,
+            [event.target.name]: event.target.value
+        });
+    };
+
+    const handleChangeForm = (event, newValue) => {
+        setShowForm(newValue);
     }
 
     return (
     <div className="aruteza">
+        Card
         <div className="Login">
-            <form autoComplete='off' className='form' onSubmit={(event) => onSubmit(event)}>
+            <form autoComplete='off' className='form' onSubmit={(event) => onSubmitLogin(event)}>
                 <div className='control'>
                     <h1>
                     Sign In
                     </h1>
                 </div>
                 <div class='control block-cube block-input'>
-                    <input onChange={(event) => handleChange(event)} name="email" type="text" placeholder="Email"/>
+                    <input onChange={(event) => handleChangeLogin(event)} name="email" type="text" placeholder="Email"/>
                     <div className='bg-top'>
                     <div className='bg-inner'></div>
                     </div>
@@ -51,7 +92,7 @@ export default function Login(props) {
                     </div>
                 </div>
                 <div className='control block-cube block-input'>
-                    <input onChange={(event) => handleChange(event)} name="password" type="password" placeholder="Password"/>
+                    <input onChange={(event) => handleChangeLogin(event)} name="password" type="password" placeholder="Password"/>
                     <div className='bg-top'>
                     <div className='bg-inner'></div>
                     </div>

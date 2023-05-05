@@ -4,9 +4,21 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Base64 } from 'js-base64';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '',
+    },
+    secondary: {
+      main: '',
+    },
+  },
+});
 
 function isTokenExpired(token) {
     if (token === null) {
@@ -29,8 +41,9 @@ function isTokenExpired(token) {
 
 export default function Navbar(props) {
 
+  const pseudo = localStorage.getItem("pseudo");
     const [isConnected, setIsConnected] = useState(false);
-    
+    const [user, setUser] = useState({});
     const navigate = useNavigate();
 
     const location = useLocation();
