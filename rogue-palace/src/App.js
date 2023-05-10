@@ -1,5 +1,11 @@
 import './CSS/App.css';
+import { BrowserRouter, Navigate, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import config from './Modules/config';
+import Home from './Home';
+import Login from './Login';
+import Endpoint from './endpoint';
+import Character from './character';
+import Profile from './profile';
 
 function isTokenExpired(token) {
   if (token === null) {
@@ -40,14 +46,14 @@ export default function App() {
   })
 
   return (
-    <config.BrowserRouter>
-      <config.Routes>
-        <config.Route path='/' element={<config.Endpoint/>}/>
-        <config.Route path='/login' element={<config.Login/>}/>
-        <config.Route path='/home' element={<ProtectedRoute><config.Home/></ProtectedRoute>}/>
-        <config.Route path='/character/:id' element={<ProtectedRoute><config.Character/></ProtectedRoute>}/>
-        <config.Route path='/profile/:id' element={<ProtectedRoute><config.Profile/></ProtectedRoute>}/>
-      </config.Routes>
-    </config.BrowserRouter>  
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Endpoint/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+        <Route path='/character/:id' element={<ProtectedRoute><Character/></ProtectedRoute>}/>
+        <Route path='/profile/:id' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+      </Routes>
+    </BrowserRouter>  
   );
 }

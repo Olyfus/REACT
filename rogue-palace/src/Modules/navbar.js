@@ -1,4 +1,9 @@
 import config from './config';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
 const theme = config.createTheme({
   palette: {
@@ -52,21 +57,21 @@ export default function Navbar(props) {
     
     return (
     <div>
-      <config.Box sx={{ flexGrow: 1 }}>
-        <config.AppBar className='app-navbar' position="static">
-          <config.Toolbar>
-            <config.Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar className='app-navbar' position="static">
+          <Toolbar>
+            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
               RoguePalace
-            </config.Typography>
+            </Typography>
               {
-                isConnected && <config.Button color="inherit" onClick={() => disconnect()}> Déconnexion </config.Button>
+                isConnected && <Button color="inherit" onClick={() => disconnect()}> Déconnexion </Button>
               }
               {
-                !isConnected && <config.Button color="inherit" onClick={() => connect()}> Connexion </config.Button>
+                !isConnected && <Button color="inherit" onClick={() => connect()}> Connexion </Button>
               }
-          </config.Toolbar>
-        </config.AppBar>
-      </config.Box>
+          </Toolbar>
+        </AppBar>
+      </Box>
     </div>
     )
 }

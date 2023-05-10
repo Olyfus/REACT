@@ -1,7 +1,6 @@
 import './CSS/App.css';
 import config from './Modules/config';
 import { Button } from '@mui/material';
-import axios from 'axios';
 import TeacherCard from './Cards/TeacherCard';
 import GroupeCard from './Cards/GroupeCard'
 import SubjectCard from './Cards/SubjectCard';
@@ -23,7 +22,7 @@ function Home(props) {
 
 
   function refreshGroupe(){
-    axios.get("https://localhost:7176/groupe/", {
+    config.axios.get("https://localhost:7176/groupe/", {
       headers: { Authorization: 'Bearer '+localStorage.getItem("access_token")+''}
     }).then((res) => {
       console.log(res.data);
@@ -35,7 +34,7 @@ function Home(props) {
   }
 
   function refreshPersonnage(){
-    axios.get("https://localhost:7176/personnage/", {
+    config.axios.get("https://localhost:7176/personnage/", {
       headers: { Authorization: 'Bearer '+localStorage.getItem("access_token")+''}
     }).then((res) => {
       console.log(res.data);
@@ -47,7 +46,7 @@ function Home(props) {
   }
   
   function refreshUtilisateur(){
-    axios.get("https://localhost:7176/user/", {
+    config.axios.get("https://localhost:7176/user/", {
       headers: { Authorization: 'Bearer '+localStorage.getItem("access_token")+''}
     }).then((res) => {
       console.log(res.data);
@@ -59,7 +58,7 @@ function Home(props) {
   }
 
   function refreshTeachers(){
-    axios.get("https://localhost:7176/teachers", {
+    config.axios.get("https://localhost:7176/teachers", {
       headers: { Authorization: 'Bearer '+localStorage.getItem("access_token")+''}
     }).then((res) => {
       console.log(res.data);
@@ -70,7 +69,7 @@ function Home(props) {
   }
 
   function refreshSubject(){
-    axios.get("https://localhost:7176/subject", {
+    config.axios.get("https://localhost:7176/subject", {
       headers: { Authorization: 'Bearer '+localStorage.getItem("access_token")+''}
     }).then((res) => {
       console.log(res.data);
