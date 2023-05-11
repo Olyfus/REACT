@@ -1,20 +1,23 @@
-import config from './config';
+import React, { useEffect, useState } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter, Navigate, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import { Base64 } from 'js-base64';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-const theme = config.createTheme({
-  palette: {
-    primary: {
-      main: '',
-    },
-    secondary: {
-      main: '',
-    },
-  },
-});
+// const theme = createTheme({
+//   palette: {
+//     primary: {
+//       main: '',
+//     },
+//     secondary: {
+//       main: '',
+//     },
+//   },
+// });
 
 function isTokenExpired(token) {
     if (token === null) {
@@ -22,7 +25,7 @@ function isTokenExpired(token) {
     }
     try {
       // Décoder le token pour récupérer les données de payload
-      const payload = JSON.parse(config.Base64.decode(token.split(".")[1]));
+      const payload = JSON.parse(Base64.decode(token.split(".")[1]));
       // Récupérer la propriété 'exp' qui contient un timestamp
       const expiresAt = payload.exp;
       // Transformer le timestamp en date
@@ -35,43 +38,45 @@ function isTokenExpired(token) {
     }
   }
 
-export default function Navbar(props) {
-
+// function Navbar(props) {
+const Navbar = (props) => {
+  const [isConnected, setIsConnected] = useState(false);
   const pseudo = localStorage.getItem("pseudo");
-    const [isConnected, setIsConnected] = config.useState(false);
-    const [user, setUser] = config.useState({});
-    const navigate = config.useNavigate();
+  const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
-    const location = config.useLocation();
-    config.useEffect(() => {
-        setIsConnected(!isTokenExpired(localStorage.getItem("access_token")))
-    }, [location])
+  const location = useLocation();
 
-    const disconnect = () => {
-        localStorage.removeItem("access_token");
-        return navigate("/")
-    }
-    const connect = () => {
-        return navigate("/login")
-    }
-    
-    return (
-    <div>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar className='app-navbar' position="static">
-          <Toolbar>
-            <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-              RoguePalace
-            </Typography>
-              {
-                isConnected && <Button color="inherit" onClick={() => disconnect()}> Déconnexion </Button>
-              }
-              {
-                !isConnected && <Button color="inherit" onClick={() => connect()}> Connexion </Button>
-              }
-          </Toolbar>
-        </AppBar>
-      </Box>
-    </div>
-    )
+  useEffect(() => {
+      setIsConnected(!isTokenExpired(localStorage.getItem("access_token")))
+  }, [location])
+
+  const disconnect = () => {
+      localStorage.removeItem("access_token");
+      return navigate("/")
+  }
+  const connect = () => {
+      return navigate("/login")
+  }
+  
+  return (
+  <div>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar className='app-navbar' position="static">
+        <Toolbar>
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+            RoguePalace
+          </Typography>
+            {
+              isConnected && <Button color="inherit" onClick={() => disconnect()}> Déconnexion </Button>
+            }
+            {
+              !isConnected && <Button color="inherit" onClick={() => connect()}> Connexion </Button>
+            }
+        </Toolbar>
+      </AppBar>
+    </Box>
+  </div>
+  )
 }
+export default Navbar;

@@ -1,16 +1,17 @@
-import config from "../Modules/config";
+import { useEffect, useState, React } from 'react';
+import axios from "axios";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-export default function SubjectCard(props) {
+function SubjectCard(props) {
     const theme = {
         spacing : 8,
     }
 
     const { sub } = props;
 
-    config.useEffect(() => {
+    useEffect(() => {
         console.log(props);
     })
 
@@ -31,3 +32,4 @@ export default function SubjectCard(props) {
         </div>
     );
 };
+export default SubjectCard;

@@ -1,4 +1,11 @@
-import config from '../Modules/config';
+import { useEffect, useState, React } from 'react';
+import axios from "axios";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const names = [
   'Oliver Hansen',
@@ -13,9 +20,9 @@ const names = [
   'Kelly Snyder',
 ];
 
-export default function MultipleSelectNative() {
+ function GroupeCard() {
 
-  const [personName, setPersonName] = config.useState([]);
+  const [personName, setPersonName] = useState([]);
 
   const handleChangeMultiple = (event) => {
 
@@ -33,11 +40,11 @@ export default function MultipleSelectNative() {
 
   return (
     <div>
-      <config.FormControl sx={{ m: 1, minWidth: 120, maxWidth: 300 }} className="groupcard">
-        <config.InputLabel shrink htmlFor="select-multiple-native">
+      <FormControl sx={{ m: 1, minWidth: 120, maxWidth: 300 }} className="groupcard">
+        <InputLabel shrink htmlFor="select-multiple-native">
           Native
-        </config.InputLabel>
-        <config.Select
+        </InputLabel>
+        <Select
           multiple
           native
           value={personName}
@@ -53,8 +60,9 @@ export default function MultipleSelectNative() {
               {name}
             </option>
           ))}
-        </config.Select>
-      </config.FormControl>
+        </Select>
+      </FormControl>
     </div>
   );
 }
+export default GroupeCard

@@ -1,19 +1,22 @@
+import { useEffect, useState, React } from 'react';
+import { BrowserRouter, Navigate, Route, Routes, useNavigate, useLocation } from 'react-router-dom';
+import axios from "axios";
+import Navbar from './Modules/navbar';
 import './CSS/login.css';
-import config from "./Modules/config";
 
 // Navbar();
 
-export default function Login(props) {
-    const [showPassword, setShowPassword] = config.useState(false);
-    const [showForm, setShowForm] = config.useState('1');
-    const [formDataLogin, setFormDataLogin] = config.useState({ email: '', password: '' });
-    const [formDataSignup, setFormDataSignUp] = config.useState({ pseudo: '', email: '', password: '' });
-    const navigate = config.useNavigate();
+function Login(props) {
+    const [showPassword, setShowPassword] = useState(false);
+    const [showForm, setShowForm] = useState('1');
+    const [formDataLogin, setFormDataLogin] = useState({ email: '', password: '' });
+    const [formDataSignup, setFormDataSignUp] = useState({ pseudo: '', email: '', password: '' });
+    const navigate = useNavigate();
 
     const onSubmitLogin = (event) => {
         event.preventDefault();
         
-        config.axios.post("https://localhost:7176/auth/login", formDataLogin)
+        axios.post("https://localhost:7176/auth/login", formDataLogin)
             .then((res) => {
                 if (res.data.token) {
                     localStorage.setItem("access_token", res.data.token);
@@ -29,7 +32,7 @@ export default function Login(props) {
     const onSubmitSignup = (event) => {
         event.preventDefault();
 
-        config.axios.post("https://localhost:7176/auth/signup", formDataSignup)
+        axios.post("https://localhost:7176/auth/signup", formDataSignup)
         .then((res) => {
             if (res.data) {
                 setTimeout(function() {
@@ -113,3 +116,5 @@ export default function Login(props) {
     </div>
     );
   }
+
+export default Login;

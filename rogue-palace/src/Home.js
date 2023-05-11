@@ -1,28 +1,29 @@
-import './CSS/App.css';
-import config from './Modules/config';
 import { Button } from '@mui/material';
 import TeacherCard from './Cards/TeacherCard';
+import axios from "axios";
+import { useEffect, useState, React } from 'react';
 import GroupeCard from './Cards/GroupeCard'
 import SubjectCard from './Cards/SubjectCard';
 import Navbar from "./Modules/navbar";
+import './CSS/App.css';
 
 
 function Home(props) {
   
-  const [teachers, setTeachers] = config.useState([]);
-  const [subject, setSubject] = config.useState([]);
-  const [groupe, setGroupe] = config.useState([]);
-  const [personnage, setPersonnage] = config.useState([]);
-  const [utilisateur, setUtilisateur] = config.useState([]);
+  const [teachers, setTeachers] = useState([]);
+  const [subject, setSubject] = useState([]);
+  const [groupe, setGroupe] = useState([]);
+  const [personnage, setPersonnage] = useState([]);
+  const [utilisateur, setUtilisateur] = useState([]);
 
-  config.useEffect(() => {
+  useEffect(() => {
     refreshTeachers();
     refreshSubject();
   }, [])
 
 
   function refreshGroupe(){
-    config.axios.get("https://localhost:7176/groupe/", {
+    axios.get("https://localhost:7176/groupe/", {
       headers: { Authorization: 'Bearer '+localStorage.getItem("access_token")+''}
     }).then((res) => {
       console.log(res.data);
@@ -34,7 +35,7 @@ function Home(props) {
   }
 
   function refreshPersonnage(){
-    config.axios.get("https://localhost:7176/personnage/", {
+    axios.get("https://localhost:7176/personnage/", {
       headers: { Authorization: 'Bearer '+localStorage.getItem("access_token")+''}
     }).then((res) => {
       console.log(res.data);
@@ -46,7 +47,7 @@ function Home(props) {
   }
   
   function refreshUtilisateur(){
-    config.axios.get("https://localhost:7176/user/", {
+    axios.get("https://localhost:7176/user/", {
       headers: { Authorization: 'Bearer '+localStorage.getItem("access_token")+''}
     }).then((res) => {
       console.log(res.data);
@@ -58,7 +59,7 @@ function Home(props) {
   }
 
   function refreshTeachers(){
-    config.axios.get("https://localhost:7176/teachers", {
+    axios.get("https://localhost:7176/teachers", {
       headers: { Authorization: 'Bearer '+localStorage.getItem("access_token")+''}
     }).then((res) => {
       console.log(res.data);
@@ -69,7 +70,7 @@ function Home(props) {
   }
 
   function refreshSubject(){
-    config.axios.get("https://localhost:7176/subject", {
+    axios.get("https://localhost:7176/subject", {
       headers: { Authorization: 'Bearer '+localStorage.getItem("access_token")+''}
     }).then((res) => {
       console.log(res.data);
