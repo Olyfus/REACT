@@ -20,7 +20,7 @@ const names = [
   'Kelly Snyder',
 ];
 
- function GroupeCard() {
+function GroupeCard() {
 
   const [personName, setPersonName] = useState([]);
 

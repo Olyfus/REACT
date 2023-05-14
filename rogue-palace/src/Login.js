@@ -4,7 +4,6 @@ import axios from "axios";
 import Navbar from './Modules/navbar';
 import './CSS/login.css';
 
-// Navbar();
 
 function Login(props) {
     const [showPassword, setShowPassword] = useState(false);
@@ -64,56 +63,55 @@ function Login(props) {
     }
 
     return (
-    <div className="aruteza">
-        Card
-        <div className="Login">
-            <form autoComplete='off' className='form' onSubmit={(event) => onSubmitLogin(event)}>
-                <div className='control'>
-                    <h1>
-                    Sign In
-                    </h1>
-                </div>
-                <div class='control block-cube block-input'>
-                    <input onChange={(event) => handleChangeLogin(event)} name="email" type="text" placeholder="Email"/>
-                    <div className='bg-top'>
-                    <div className='bg-inner'></div>
+        <div className="aruteza">
+            <div className="Login">
+                <form autoComplete='off' className='form' onSubmit={(event) => onSubmitLogin(event)}>
+                    <div className='control'>
+                        <h1>
+                        Sign In
+                        </h1>
                     </div>
-                    <div className='bg-right'>
-                    <div className='bg-inner'></div>
+                    <div class='control block-cube block-input'>
+                        <input onChange={(event) => handleChangeLogin(event)} name="email" type="text" placeholder="Email"/>
+                        <div className='bg-top'>
+                        <div className='bg-inner'></div>
+                        </div>
+                        <div className='bg-right'>
+                        <div className='bg-inner'></div>
+                        </div>
+                        <div className='bg'>
+                        <div className='bg-inner'></div>
+                        </div>
                     </div>
-                    <div className='bg'>
-                    <div className='bg-inner'></div>
+                    <div className='control block-cube block-input'>
+                        <input onChange={(event) => handleChangeLogin(event)} name="password" type="password" placeholder="Password"/>
+                        <div className='bg-top'>
+                        <div className='bg-inner'></div>
+                        </div>
+                        <div className='bg-right'>
+                        <div className='bg-inner'></div>
+                        </div>
+                        <div className='bg'>
+                        <div className='bg-inner'></div>
+                        </div>
                     </div>
-                </div>
-                <div className='control block-cube block-input'>
-                    <input onChange={(event) => handleChangeLogin(event)} name="password" type="password" placeholder="Password"/>
-                    <div className='bg-top'>
-                    <div className='bg-inner'></div>
-                    </div>
-                    <div className='bg-right'>
-                    <div className='bg-inner'></div>
-                    </div>
-                    <div className='bg'>
-                    <div className='bg-inner'></div>
-                    </div>
-                </div>
-                <button className='btn block-cube block-cube-hover' type="submit">
-                    <div className='bg-top'>
-                    <div className='bg-inner'></div>
-                    </div>
-                    <div className='bg-right'>
-                    <div className='bg-inner'></div>
-                    </div>
-                    <div className='bg'>
-                    <div className='bg-inner'></div>
-                    </div>
-                    <div className='text'>
-                        Log In
-                    </div>
-                </button>
-            </form>
+                    <button className='btn block-cube block-cube-hover' type="submit">
+                        <div className='bg-top'>
+                        <div className='bg-inner'></div>
+                        </div>
+                        <div className='bg-right'>
+                        <div className='bg-inner'></div>
+                        </div>
+                        <div className='bg'>
+                        <div className='bg-inner'></div>
+                        </div>
+                        <div className='text'>
+                            Log In
+                        </div>
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
     );
   }
 

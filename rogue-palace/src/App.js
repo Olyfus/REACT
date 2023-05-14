@@ -49,6 +49,15 @@ function App() {
   })
 
   return (
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path='/' element={<Endpoint/>}/>
+    //     <Route path='/login' element={<Login/>}/>
+    //     <Route path='/home' element={<Home/>}/>
+    //     <Route path='/character/:id' element={<Character/>}/>
+    //     <Route path='/profile/:id' element={<Profile/>}/>
+    //   </Routes>
+    // </BrowserRouter>  
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Endpoint/>}/>
