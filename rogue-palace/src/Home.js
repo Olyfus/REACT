@@ -108,15 +108,20 @@ function Home(props) {
             <div className="card-container">
               <div className='charactercard'>
                 {subject.map((item, index) => (
-                  // <PersonnageCard key={index} subject={item}/>
                   <SubjectCard key={index} subject={item}/>
                 ))}
+                {/* {personnage.map((item, index) => (
+                  <PersonnageCard key={index} subject={item}/>
+                ))} */}
               </div>
               <div className='groupcard'>
                 {teachers.map((item, index) => (
-                  <GroupeCard key={index} index={item}/>
-                  // <TeacherCard key={index} teacher={item}/>
+                  <TeacherCard key={index} teacher={item}/>
                 ))}
+                {/* {groupe.map((item, index) => (
+                  <GroupeCard key={index} index={item}/>
+                ))} */}
+                
               </div>
             </div>
           </AppBar>
