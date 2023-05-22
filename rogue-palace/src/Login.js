@@ -15,7 +15,7 @@ function Login(props) {
     const onSubmitLogin = (event) => {
         event.preventDefault();
         
-        axios.post("https://localhost:7176/auth/login", formDataLogin)
+        axios.post("https://localhost:7183/auth/login", formDataLogin)
             .then((res) => {
                 if (res.data.token) {
                     localStorage.setItem("access_token", res.data.token);
@@ -31,7 +31,7 @@ function Login(props) {
     const onSubmitSignup = (event) => {
         event.preventDefault();
 
-        axios.post("https://localhost:7176/auth/signup", formDataSignup)
+        axios.post("https://localhost:7183/auth/signup", formDataSignup)
         .then((res) => {
             if (res.data) {
                 setTimeout(function() {
