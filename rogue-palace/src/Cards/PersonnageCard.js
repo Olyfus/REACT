@@ -9,7 +9,7 @@ function PersonnageCard(props) {
         spacing : 8,
     }
 
-    const { sub } = props;
+    const { perso } = props;
 
     useEffect(() => {
         console.log(props);
