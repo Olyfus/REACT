@@ -9,25 +9,21 @@ import Select from '@mui/material/Select';
 
 function GroupeCard(props) {
 
-  const [personName, setPersonName] = useState([]);
-
-  const handleChangeMultiple = (event) => {
-
-    const { options } = event.target;
-
-    const value = [];
-
-    for (let i = 0, l = options.length; i < l; i += 1) {
-      if (options[i].selected) {
-        value.push(options[i].value);
-      }
-    }
-    setPersonName(value);
-  };
+  const [character, setCharacter] = useState([]);
+  setCharacter(value);
 
   return (
     <div>
-      {props.groupe.name}
+      <Card sx={{ maxWidth: '20%', m: 2, p: 2, position: 'sticky', left: '8.5%' }}>
+        <CardContent>
+          <Typography gutterBottom variant="h4" component="div">
+            {props.groupe.name}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Nombre de membre : {props.groupe.class}
+          </Typography>
+        </CardContent>
+      </Card>
     </div>
   );
 }
