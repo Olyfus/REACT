@@ -47,27 +47,30 @@ function App() {
       }
     })
   })
-
+  
   return (
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path='/' element={<Endpoint/>}/>
-    //     <Route path='/login' element={<Login/>}/>
-    //     <Route path='/home' element={<Home/>}/>
-    //     <Route path='/character/:id' element={<Character/>}/>
-    //     <Route path='/profile/:id' element={<Profile/>}/>
-    //   </Routes>
-    // </BrowserRouter>  
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Endpoint/>}/>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
-        <Route path='/character/:id' element={<ProtectedRoute><Character/></ProtectedRoute>}/>
-        <Route path='/profile/:id' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
-      </Routes>
-    </BrowserRouter>  
+  <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Endpoint/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/home' element={<Home/>}/>
+      <Route path='/character/:id' element={<Character/>}/>
+      <Route path='/profile/:id' element={<Profile/>}/>
+    </Routes>
+  </BrowserRouter>  
   );
+  
+  // return (
+  //   <BrowserRouter>
+  //     <Routes>
+  //       <Route path='/' element={<Endpoint/>}/>
+  //       <Route path='/login' element={<Login/>}/>
+  //       <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}/>
+  //       <Route path='/character/:id' element={<ProtectedRoute><Character/></ProtectedRoute>}/>
+  //       <Route path='/profile/:id' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+  //     </Routes>
+  //   </BrowserRouter>  
+  // );
 }
 
 export default App;

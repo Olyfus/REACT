@@ -1,9 +1,11 @@
 import { useEffect, useState, React } from 'react';
 import axios from "axios";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { AppBar, Button,  Avatar, Box, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button,  Avatar, Box, IconButton, Menu, MenuItem, Toolbar, Typography, Tab } from '@mui/material';
+import { TabContext, TabList, TabPanel } from '@mui/lab';
 import TeacherCard from './Cards/TeacherCard';
-import GroupeCard from './Cards/GroupeCard'
+import GroupeCard from './Cards/GroupeCard';
+import PersonnageCard from './Cards/PersonnageCard';
 import SubjectCard from './Cards/SubjectCard';
 import Navbar from "./Modules/navbar";
 import './CSS/App.css';
@@ -23,6 +25,7 @@ function Home(props) {
   
   const [teachers, setTeachers] = useState([]);
   const [subject, setSubject] = useState([]);
+  const [tabValue, setTabValue] = useState('1');
   const [groupe, setGroupe] = useState([]);
   const [personnage, setPersonnage] = useState([]);
   const [utilisateur, setUtilisateur] = useState([]);
@@ -91,39 +94,70 @@ function Home(props) {
     })
   }
 
+  const handleChangeTab = (event, newValue) => {
+    setTabValue(newValue);
+  };
+
   return (
     <div className="App">
       <Navbar />    
       <ThemeProvider theme={homeTheme}>
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
-            <Toolbar>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1}}>
-                <div className=''>
-                  <Button className='' color="inherit" onClick={() => refreshPersonnage()} variant="outlined">Personnage</Button>
-                  <Button className='' color="inherit" onClick={() => refreshGroupe()} variant="outlined">Groupe</Button>
-                </div>
-              </Typography>
-            </Toolbar>
-            <div className="card-container">
-              <div className='charactercard'>
+            <TabContext value={tabValue}>
+              <Toolbar>
+                <TabList onChange={handleChangeTab} sx={{ borderColor: 'divider' }} aria-label='lab tabs' >
+                  <Tab label="Personnage" value="1"/>
+                  <Tab label="Groupe" value="2" />
+                  <Tab label="Teacher" value="3" />
+                  <Tab label="Subject" value="4" />
+                </TabList>
+              </Toolbar>
+
+              <TabPanel value='1'>
+                perso
+                {personnage.map((item, index) => (
+                  <PersonnageCard key={index} subject={item}/>
+                ))}
+              </TabPanel>
+
+              <TabPanel value='2'>
+                groupe
+                {groupe.map((item, index) => (
+                  <GroupeCard key={index} index={item}/>
+                ))}
+              </TabPanel>
+
+              <TabPanel value='3'>
+                teachers
+                {teachers.map((item, index) => (
+                  <TeacherCard key={index} teacher={item}/>
+                  ))}
+              </TabPanel>
+
+              <TabPanel value='4'>
+                subject
                 {subject.map((item, index) => (
                   <SubjectCard key={index} subject={item}/>
                 ))}
-                {/* {personnage.map((item, index) => (
-                  <PersonnageCard key={index} subject={item}/>
-                ))} */}
+              </TabPanel>
+              <div className="card-container">
+                <div className='charactercard'>
+                  {subject.map((item, index) => (
+                    <SubjectCard key={index} subject={item}/>
+                    ))}
+                </div>
+                <div className='groupcard'>
+                  {teachers.map((item, index) => (
+                    <TeacherCard key={index} teacher={item}/>
+                    ))}
+                  {/* {groupe.map((item, index) => (
+                    <GroupeCard key={index} index={item}/>
+                  ))} */}
+                  
+                </div>
               </div>
-              <div className='groupcard'>
-                {teachers.map((item, index) => (
-                  <TeacherCard key={index} teacher={item}/>
-                ))}
-                {/* {groupe.map((item, index) => (
-                  <GroupeCard key={index} index={item}/>
-                ))} */}
-                
-              </div>
-            </div>
+            </TabContext>
           </AppBar>
         </Box>
       </ThemeProvider>
